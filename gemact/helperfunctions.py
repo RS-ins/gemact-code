@@ -885,7 +885,7 @@ def censored_moment(n, d, c, dist):
 
     if (d == 0 and c == np.inf):
         output = dist.moment(n=n)
-    elif (n == 1) and (d > 0 or c < np.infty):
+    elif (n == 1) and (d > 0 or c < np.inf):
         output = dist.lev(v=c+d) - dist.lev(v=d)
     else:
         low = d

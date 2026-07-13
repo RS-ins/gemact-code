@@ -4136,7 +4136,7 @@ class GenBeta:
 
         filter_one = (x == 0.0)
         if np.any(filter_one):
-            output[filter_one * (self.shape1 * self.shape3 < 1)] = np.infty
+            output[filter_one * (self.shape1 * self.shape3 < 1)] = np.inf
             output[filter_one * (self.shape1 * self.shape3 == 1)] = self.shape3 / special.beta(self.shape1,
                                                                                                      self.shape2)
 
@@ -4151,7 +4151,7 @@ class GenBeta:
 
         filter_three = (x > 0.0) * (x == self.scale)
         if np.any(filter_three):
-            output[filter_three * (self.shape2 < 1)] = np.infty
+            output[filter_three * (self.shape2 < 1)] = np.inf
             output[filter_three * (self.shape2 == 1)] = self.shape1 * self.shape3
 
         if len(output) == 1:
@@ -4376,7 +4376,7 @@ class GenBeta:
                                       1 - self._dist.cdf(u_))
 
         if 1 <= (- self.shape1 * self.shape3):
-            output = [np.infty] * v_shape
+            output = [np.inf] * v_shape
 
         if len(output) == 1:
             output = output.item()
