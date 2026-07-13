@@ -1268,7 +1268,7 @@ class ZTPoisson:
 
         temp = self._dist.pmf(x) / (1 - self.p0)
         x = np.array(x)
-        zeros = np.where(x == 0)[0]
+        zeros = np.where(np.atleast_1d(x == 0))[0]
         if zeros.size == 0:
             return temp
         else:
@@ -1518,7 +1518,7 @@ class ZMPoisson:
 
         temp = self._dist.pmf(x) * (1 - self.p0m) / (1 - self.p0)
         x = np.array(x)
-        zeros = np.where(x == 0)[0]
+        zeros = np.where(np.atleast_1d(x == 0))[0]
         if zeros.size == 0:
             return temp
         else:
@@ -1753,7 +1753,7 @@ class ZTBinom:
 
         temp = self._dist.pmf(x) / (1 - self.p0)
         x = np.array(x)
-        zeros = np.where(x == 0)[0]
+        zeros = np.where(np.atleast_1d(x == 0))[0]
         if zeros.size == 0:
             return temp
         else:
@@ -2620,7 +2620,7 @@ class ZTNegBinom:
         """
         temp = (self._dist.pmf(x)) / (1 - self.p0)
         x = np.array(x)
-        zeros = np.where(x == 0)[0]
+        zeros = np.where(np.atleast_1d(x == 0))[0]
         if zeros.size == 0:
             return temp
         else:
@@ -3142,7 +3142,7 @@ class ZMLogser:
         p_ = np.array(q)
         temp = self._dist.ppf((1 - self._dist.cdf(0)) * (p_ - self.p0m) / (1 - self.p0m) + self._dist.cdf(0))
 
-        zeros = np.where(p_ <= self.p0m)[0]
+        zeros = np.where(np.atleast_1d(p_ <= self.p0m))[0]
         if zeros.size == 0:
             return temp
         else:
@@ -3473,7 +3473,7 @@ class Exponential(_ContinuousDistribution):
 
         temp = -np.log(1 - q) / self.theta
 
-        zeros = np.where(((q >= 1.) & (q <= 0.)))[0]
+        zeros = np.where(np.atleast_1d(((q >= 1.) & (q <= 0.))))[0]
 
         if zeros.size == 0:
             return temp
