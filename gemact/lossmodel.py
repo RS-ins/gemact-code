@@ -356,7 +356,7 @@ class Layer:
         if self.category == 'xlrs':
             return True
         else:
-            if self.aggr_deductible > 0 or self.aggr_cover < np.infty:
+            if self.aggr_deductible > 0 or self.aggr_cover < np.inf:
                 return True
         return False
 
